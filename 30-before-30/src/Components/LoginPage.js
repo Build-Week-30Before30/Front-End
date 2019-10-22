@@ -10,7 +10,7 @@ const LoginForm = ({ touched, errors, status }) => {
    useEffect(() => {
       if (status) {
          setLogin([...login, status]);
-         const loggedIn = localStorage.setItem('loggedIn', 'user logged in');
+        localStorage.setItem('loggedIn', 'true');
       }
    }, [status]);
 
