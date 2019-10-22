@@ -1,21 +1,17 @@
-import React from "react";
-import FormikAddTodo from "./AddTodo";
+import React from 'react';
+import FormikAddTodo from './AddTodo';
 
 const HomePage = () => {
-    return (
-        <div>
-            {/* <NavBar/> */}
-            <div className="container">
-                <div className="profile-contain">
-                    {/* <ProfileBar/> */}
-                </div>
-                <div className="todo-contain">
-                    <FormikAddTodo/>
-                    {/* <TodoList/> */}
-                </div>
+   return (
+      <div>
+         <div className='container'>
+            <div className='profile-contain'></div>
+            <div className='todo-contain'>
+               <FormikAddTodo />
             </div>
-        </div>
-    )
+         </div>
+      </div>
+   );
 };
 
 export default HomePage;
