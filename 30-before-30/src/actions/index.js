@@ -1,4 +1,4 @@
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import api from '../utils/axiosWithAuth';
 
 export const UPDATE_LOGIN_STATUS = 'UPDATE_LOGIN_STATUS';
 export const UPDATE_LISTS_STATE = 'UPDATE_LISTS_STATE';
@@ -33,8 +33,7 @@ export const updateListState = list => {
 export const getTodoList = () => {
    return dispatch => {
       dispatch({ type: GET_LISTS_START });
-      axiosWithAuth()
-         .get(`/lists/${id}`)
+      api.get(`/lists`)
          .then(res => dispatch({ type: GET_LISTS_SUCCESS, payload: res.data }))
          .catch(err =>
             dispatch({ type: GET_LISTS_FAIL, payload: err.response })
@@ -46,8 +45,7 @@ export const getTodoList = () => {
 export const addNewTodo = newTodo => {
    return dispatch => {
       dispatch({ type: POST_LISTS_START });
-      axiosWithAuth()
-         .post('/lists', newTodo)
+      api.post('/lists', newTodo)
          .then(res => dispatch({ type: POST_LISTS_SUCCESS, payload: res.data }))
          .catch(err =>
             dispatch({ type: POST_LISTS_FAIL, payload: err.response })
@@ -59,8 +57,7 @@ export const addNewTodo = newTodo => {
 export const editTodo = editTodo => {
    return dispatch => {
       dispatch({ type: PUT_LISTS_START });
-      axiosWithAuth()
-         .put(`/lists/${editTodo.id}`, editTodo)
+      api.put(`/lists/${editTodo.id}`, editTodo)
          .then(res => dispatch({ type: PUT_LISTS_SUCCESS, payload: res.data }))
          .catch(err =>
             dispatch({ type: PUT_LISTS_FAIL, payload: err.response })
@@ -72,8 +69,8 @@ export const editTodo = editTodo => {
 export const removeTodo = byeTodo => {
    return dispatch => {
       dispatch({ type: DELETE_LISTS_START });
-      axiosWithAuth()
-         .delete(`/lists/${byeTodo.id}`)
+      api.delete(`/lists/${byeTodo.id}`, byeTodo)
+
          .then(res =>
             dispatch({ type: DELETE_LISTS_SUCCESS, payload: res.data })
          )
