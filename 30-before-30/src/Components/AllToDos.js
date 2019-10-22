@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from "react";
 import api from "../utils/axiosWithAuth";
-import TodoCard from "./TodoCard";
+import TodoList from "./ToDoList";
 
 
-const ToDoList = (props) => {
+const AllToDos = (props) => {
 
+    api.get('/lists/:id').then((res) => console.log(res.data))
     return (
         <div>
-    <TodoCard key={item.id} item={item} toggleItem={props.toggleItem} />
+        {props.task.map(item => (
+          <TodoList key={item.id} item={item} toggleItem={props.toggleItem} />
         ))}
        
         <button className="clear-button" onClick={props.clearCompleted}>
