@@ -18,11 +18,11 @@ const AddTodo = ({touched, errors, status}) => {
             <Form>
                 <Field
                     type="text"
-                    name="todo"
+                    name="name"
                     placeholder="Add a BucketList Item"
                     />
-                {touched.todo && errors.todo && (
-                    <p className="todoReq">{errors.todo}</p>
+                {touched.name && errors.name && (
+                    <p className="todoReq">{errors.name}</p>
                 )}
                 <Field
                     type="date"
@@ -48,18 +48,18 @@ const AddTodo = ({touched, errors, status}) => {
     )
 }
 const FormikAddTodo = withFormik ({
-    mapPropsToValues({todo, deadline, description}){
+    mapPropsToValues({name, deadline, description}){
         return {
-            todo: todo || "",
+            name: name || "",
             deadline: deadline || "",
             description: description || ""
         };
     },
 
     validationSchema: Yup.object().shape({
-        todo: Yup.string().required("Please add a Task"),
+        name: Yup.string().required("Please add a Task"),
         deadline: Yup.string().required("Please add a Deadline"),
-        description: Yup.string().required("Please add a Description")
+        description: Yup.string().required("Please add a link")
     }),
 
     handleSubmit(values, {resetForm, setStatus}) {
