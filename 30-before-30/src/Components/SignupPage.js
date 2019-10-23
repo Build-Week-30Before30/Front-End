@@ -14,28 +14,30 @@ const SignupForm = ({ touched, errors, status }) => {
    }, [status]);
 
    return (
-      <div className='signup-form'>
-         <h1>Signup Page</h1>
-         <Form>
-            <label>
-               {' '}
-               Name:
-               <Field type='text' name='username' placeholder='Username' />
-               {touched.name && errors.name && (
-                  <p className='error'>{errors.name}</p>
-               )}
-            </label>
-            <label>
-               {' '}
-               Password:
-               <Field type='password' name='password' placeholder='Password' />
-               {touched.password && errors.password && (
-                  <p className='error'>{errors.password}</p>
-               )}
-            </label>
-            <button type='submit'>Create Account</button>{' '}
-            {/* signup button to send data to the server */}
-         </Form>
+      <div className="form-contain">
+         <div className='login-form'>
+            <h2>Signup Page</h2>
+            <Form>
+               <label>
+                  {' '}
+                  Name:
+                  <Field type='text' name='username' placeholder='Username' />
+                  {touched.name && errors.name && (
+                     <p className='error'>{errors.name}</p>
+                  )}
+               </label>
+               <label>
+                  {' '}
+                  Password:
+                  <Field type='password' name='password' placeholder='Password' />
+                  {touched.password && errors.password && (
+                     <p className='error'>{errors.password}</p>
+                  )}
+               </label>
+               <button type='submit'>Create Account</button>{' '}
+               {/* signup button to send data to the server */}
+            </Form>
+         </div>
       </div>
    );
 };
