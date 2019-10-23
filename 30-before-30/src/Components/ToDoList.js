@@ -4,11 +4,12 @@ import TodoCard from "./TodoCard";
 
 
 const ToDoList = (props) => {
+const [userList, setUserList] = useState([])
 
     return (
         <div>
-    <TodoCard key={item.id} item={item} toggleItem={props.toggleItem} />
-        ))}
+    <TodoCard key={userList.id} item={userList} toggleItem={props.toggleItem} />
+ 
        
         <button className="clear-button" onClick={props.clearCompleted}>
           {console.log(props)}
