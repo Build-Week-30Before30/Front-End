@@ -1,8 +1,0 @@
-{
-    "version": 2,
-    "name": "30-before-30",
-    "builds": [{ "src": "30-before-30/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
-    "routes": [
-        { "src": "/(.*)", "dest": "30-before-30/$1" }
-    ]
-}
