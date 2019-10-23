@@ -4,9 +4,12 @@ import * as Yup from "yup";
 import api from "../utils/axiosWithAuth";
 import "./ComponentCSS/AddTodo.css";
 import TodoCard from "./TodoCard";
+import { addNewTodo } from '../actions';
 
-const AddTodo = ({touched, errors, status}) => {
-    const [task, setTask] = useState([]);
+
+
+const AddTodo = ({ touched, errors, status }) => {
+   const [task, setTask] = useState([]);
 
     useEffect(()=> {
         status && setTask(task => [...task, status]);
@@ -20,7 +23,7 @@ const AddTodo = ({touched, errors, status}) => {
                     <div className="input-contain">
                         <Field
                             type="text"
-                            name="todo"
+                            name="name"
                             placeholder="Add a BucketList Item"
                             />
                         {touched.todo && errors.todo && (
@@ -53,27 +56,28 @@ const AddTodo = ({touched, errors, status}) => {
     )
 }
 const FormikAddTodo = withFormik ({
-    mapPropsToValues({todo, deadline, description}){
+    mapPropsToValues({name, deadline, description}){
         return {
-            todo: todo || "",
+         name: name || "",
             deadline: deadline || "",
             description: description || ""
         };
     },
 
-    validationSchema: Yup.object().shape({
-        todo: Yup.string().required("Please add a Task"),
-        description: Yup.string().required("Please add a Link")
+   validationSchema: Yup.object().shape({
+         name: Yup.string().required("Please add a Task"),
+         description: Yup.string().required("Please add a Link")
     }),
 
-    handleSubmit(values, {resetForm, setStatus}) {
-        api
-            .post("/lists", values)
-            .then(res => { setStatus(res.data); })
-            .catch(error => console.log("Add Todo Error", error));
-        
-        resetForm();
-    }
+   handleSubmit(values, { resetForm, setStatus }) {
+      api.post('/lists', values)
+         .then(res => {
+            setStatus(res.data);
+         })
+         .catch(error => console.log('Add Todo Error', error));
+
+      resetForm();
+   }
 })(AddTodo);
 
 export default FormikAddTodo;
