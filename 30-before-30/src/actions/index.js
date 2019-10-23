@@ -1,7 +1,7 @@
 import api from '../utils/axiosWithAuth';
 
 export const UPDATE_LOGIN_STATUS = 'UPDATE_LOGIN_STATUS';
-export const UPDATE_LISTS_STATE = 'UPDATE_LISTS_STATE';
+export const UPDATE_LIST_STATE = 'UPDATE_LIST_STATE';
 export const GET_LISTS_START = 'GET_LISTS_START';
 export const GET_LISTS_SUCCESS = 'GET_LISTS_SUCCESS';
 export const GET_LISTS_FAIL = 'GET_LISTS_FAIL';
@@ -25,7 +25,7 @@ export const loggedStatus = () => {
 // ########## update the lists ##########
 export const updateListState = list => {
    return dispatch => {
-      dispatch({ type: UPDATE_LISTS_STATE, payload: list });
+      dispatch({ type: UPDATE_LIST_STATE, payload: list });
    };
 };
 
@@ -69,7 +69,7 @@ export const editTodo = editTodo => {
 export const removeTodo = byeTodo => {
    return dispatch => {
       dispatch({ type: DELETE_LISTS_START });
-      api.delete(`/lists/${byeTodo.id}`, byeTodo)
+      api.delete(`/lists/items/${byeTodo.id}`, byeTodo)
 
          .then(res =>
             dispatch({ type: DELETE_LISTS_SUCCESS, payload: res.data })

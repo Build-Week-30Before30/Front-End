@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import ToDoList from "./ToDoList";
+import ToDoList from './ToDoList';
 import PrivateRoute from './PrivateRoute';
 import HomePage from './HomePage';
 import LoginForm from './LoginPage';
@@ -13,7 +13,7 @@ const AppRouter = () => {
             <Route path='/Home' component={HomePage} />
             <Route path='/login' component={LoginForm} />
             <Route path='/signup' component={SignupForm} />
-            <PrivateRoute path="/protected" component={ToDoList} />
+            <PrivateRoute path='/protected' component={ToDoList} />
          </Switch>
       </>
    );
