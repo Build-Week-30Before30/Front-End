@@ -17,25 +17,27 @@ const LoginForm = ({ touched, errors, status }) => {
    console.log('cookie :', document.cookie);
 
    return (
-      <div className='login-form'>
-         <h1>Login Page</h1>
-         <Form>
-            <label>
-               {' '}
-               Name:
-               <Field type='text' name='username' placeholder='Username' />
-            </label>
-            <label>
-               {' '}
-               Password:
-               <Field type='password' name='password' placeholder='Password' />
-               {touched.password && errors.password && (
-                  <p className='error'>{errors.password}</p>
-               )}
-            </label>
-            <button type='submit'>Login</button>{' '}
-            {/* login button to send data to the server */}
-         </Form>
+      <div className="form-contain">
+         <div className='login-form'>
+            <h2>Login</h2>
+            <Form>
+               <label>
+                  {' '}
+                  Username:
+                  <Field type='text' name='username' placeholder='Username' />
+               </label>
+               <label>
+                  {' '}
+                  Password:
+                  <Field type='password' name='password' placeholder='Password' />
+                  {touched.password && errors.password && (
+                     <p className='error'>{errors.password}</p>
+                     )}
+               </label>
+               <button type='submit'>Login</button>{' '}
+               {/* login button to send data to the server */}
+            </Form>
+         </div>
       </div>
    );
 };
