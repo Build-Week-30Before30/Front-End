@@ -3,14 +3,16 @@ import api from '../utils/axiosWithAuth';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import './ComponentCSS/LoginPage.css';
+import { connect } from 'react-redux';
+import { loggedStatus } from '../actions';
 
-const LoginForm = ({ touched, errors, status }) => {
+const LoginForm = ({ touched, errors, status, handleSubmit }) => {
    const [login, setLogin] = useState([]);
 
    useEffect(() => {
       if (status) {
          setLogin([...login, status]);
-        localStorage.setItem('loggedIn', 'true');
+         localStorage.setItem('loggedIn', 'true');
       }
    }, [status]);
 
@@ -18,26 +20,28 @@ const LoginForm = ({ touched, errors, status }) => {
 
    return (
       <div className="form-contain">
-         <div className='login-form'>
-            <h2>Login</h2>
-            <Form>
-               <label>
-                  {' '}
-                  Username:
-                  <Field type='text' name='username' placeholder='Username' />
-               </label>
-               <label>
-                  {' '}
-                  Password:
-                  <Field type='password' name='password' placeholder='Password' />
-                  {touched.password && errors.password && (
-                     <p className='error'>{errors.password}</p>
-                     )}
-               </label>
-               <button type='submit'>Login</button>{' '}
-               {/* login button to send data to the server */}
-            </Form>
-         </div>
+        <div className='login-form'>
+           <h1>Login Page</h1>
+           <Form onSubmit={handleSubmit}>
+              {' '}
+              {/* add on submit */}
+              <label>
+                 {' '}
+                 Name:
+                 <Field type='text' name='username' placeholder='Username' />
+              </label>
+              <label>
+                 {' '}
+                 Password:
+                 <Field type='password' name='password' placeholder='Password' />
+                 {touched.password && errors.password && (
+                    <p className='error'>{errors.password}</p>
+                 )}
+              </label>
+              <button type='submit'>Login</button>{' '}
+              {/* login button to send data to the server */}
+           </Form>
+        </div>
       </div>
    );
 };
@@ -55,16 +59,22 @@ const FormikLoginForm = withFormik({
       password: Yup.string().required()
    }),
 
-   handleSubmit(values, { setStatus }) {
+   handleSubmit(values, { props, resetForm, setSubmitting, setStatus }) {
       // setStatus is coming from formik
       api.post('/auth/login', {}, { auth: values }) // here is my axios call and my post so that the users can login after they press the "Login" button :)
          .then(res => {
             setStatus(res.data);
+            props.loggedStatus();
+            resetForm();
+            setSubmitting(false);
+            props.history.push('/home');
          })
          .catch(err => console.log(err.response));
-      console.log(document.cookie);
    }
 })(LoginForm);
 console.log('This is the HOC', FormikLoginForm);
 
-export default FormikLoginForm;
+export default connect(
+   null,
+   { loggedStatus }
+)(FormikLoginForm);
