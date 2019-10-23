@@ -24,10 +24,10 @@ const AddTodo = ({ touched, errors, status }) => {
                         <Field
                             type="text"
                             name="name"
-                            placeholder="Add a BucketList Item"
+                            placeholder="Add a Bucket List"
                             />
-                        {touched.todo && errors.todo && (
-                            <p className="todoReq">{errors.todo}</p>
+                        {touched.name && errors.name && (
+                            <p className="todoReq">{errors.name}</p>
                         )}
                     </div>
                     <div className="input-contain">
@@ -48,7 +48,7 @@ const AddTodo = ({ touched, errors, status }) => {
                             <p className="todoReq">{errors.description}</p>
                         )}
                     </div>
-                    <button type="submit">Add Task</button>
+                    <button type="submit">Add List</button>
                 </Form>
                 <TodoCard task={task}/>
             </div>
@@ -65,8 +65,8 @@ const FormikAddTodo = withFormik ({
     },
 
    validationSchema: Yup.object().shape({
-         name: Yup.string().required("Please add a Task"),
-         description: Yup.string().required("Please add a Link")
+         name: Yup.string().required("Please add a list name"),
+         description: Yup.string().required("Please add a link")
     }),
 
    handleSubmit(values, { resetForm, setStatus }) {
@@ -74,7 +74,7 @@ const FormikAddTodo = withFormik ({
          .then(res => {
             setStatus(res.data);
          })
-         .catch(error => console.log('Add Todo Error', error));
+         .catch(error => console.log('Add List Error', error));
 
       resetForm();
    }
