@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
+
 import api from '../utils/axiosWithAuth';
 import './ComponentCSS/TodoCard.css';
 import { removeTodo } from '../actions';
@@ -9,19 +9,18 @@ const TodoCard = props => {
    // let dayDue = moment(todoItem.deadline).format();
    // let time = moment(dayDue).to(today);
    //Should work when we get date from axios
-   const [todoItem, setTodoItem] = useState([])
+   const [todoItem, setTodoItem] = useState([]);
 
-   useEffect(()=> {
-      api
-         .get(`/lists/${props.id}`)
-         .then(response =>{
-            console.log(response)
-            setTodoItem(response.items)
+   useEffect(() => {
+      api.get(`/lists/${props.id}`)
+         .then(response => {
+            console.log(response);
+            setTodoItem(response.items);
          })
-         .catch(error=>{
-            console.log("This is the error from .GET TodoCard", error)
-         })
-   }, [])
+         .catch(error => {
+            console.log('This is the error from .GET TodoCard', error);
+         });
+   }, []);
 
    return (
       <div>
@@ -33,7 +32,7 @@ const TodoCard = props => {
                <div>
                   <p>{task.description}</p>
                </div>
-         <button type='submit' onClick={() => removeTodo(task)}>
+               <button type='submit' onClick={() => removeTodo(task)}>
                   Complete
                </button>
             </div>
