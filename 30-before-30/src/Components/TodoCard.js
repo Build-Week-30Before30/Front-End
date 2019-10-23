@@ -21,7 +21,7 @@ const TodoCard = props => {
          .catch(error=>{
             console.log("This is the error from .GET TodoCard", error)
          })
-   })
+   }, [])
 
    return (
       <div>
