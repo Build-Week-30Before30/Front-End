@@ -5,17 +5,18 @@ import './ComponentCSS/TodoCard.css';
 import { removeTodo } from '../actions';
 
 const TodoCard = props => {
-   // let today = moment().format();
+   const today = moment().format();
    // let dayDue = moment(todoItem.deadline).format();
    // let time = moment(dayDue).to(today);
    //Should work when we get date from axios
+   const taskList = Number(props.match.params.listID);
+
    const [todoItem, setTodoItem] = useState([])
-   console.log(props);
+
    useEffect(() => {
       api
-         .get(`/lists/${props.listId}`)
+         .get(`/lists/${taskList}`)
          .then(response => {
-            console.log(response.data);
             setTodoItem(response.data.items)
          })
          .catch(error => {
@@ -28,8 +29,8 @@ const TodoCard = props => {
          {todoItem.map(task => (
             <div>
                <p>{task.name}</p>
-               <p>Duedate: {task.deadline}</p>
-               {/* <p>{time}</p> */}
+               <p>Deadline: {moment(task.deadline).format("MMM DD, YYYY")}</p>
+               <p>{moment(task.deadline).to(today, true)} left</p>
                <div>
                   <p>{task.description}</p>
                </div>
