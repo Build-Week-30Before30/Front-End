@@ -6,6 +6,7 @@ import { withFormik, Form, Field, ErrorMessage } from "formik";
 const AddTask = ({touched, errors, status, props}) => {
   const [listItem, setListItem] = useState([]);
   const {id} = props
+
   useEffect(() => {
     status && setListItem(listItem => [...listItem, status]);
   }, [status]);
@@ -58,7 +59,7 @@ const FormikAddTask = withFormik({
   }),
 
   handleSubmit(values, { resetForm, setStatus, id }) {
-    api.post(`/lists/${id}/items`, values)
+    api.post(`/lists/${listItem}/items`, values)
        .then(res => {
           setStatus(res.data);
        })

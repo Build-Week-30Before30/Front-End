@@ -13,14 +13,14 @@ const TodoCard = props => {
    // const taskItem = props.data.find(listId=>
    //    listId.id === props.match.params.listID);
 
-   useEffect(()=> {
+   useEffect(() => {
       api
          .get(`/lists/${props.id}`)
-         .then(response =>{
+         .then(response => {
             console.log(response)
             setTodoItem(response.items)
          })
-         .catch(error=>{
+         .catch(error => {
             console.log("This is the error from .GET TodoCard", error)
          })
    }, [])
@@ -35,7 +35,7 @@ const TodoCard = props => {
                <div>
                   <p>{task.description}</p>
                </div>
-         <button type='submit' onClick={() => removeTodo(task)}>
+               <button type='submit' onClick={() => removeTodo(task)}>
                   Complete
                </button>
             </div>
