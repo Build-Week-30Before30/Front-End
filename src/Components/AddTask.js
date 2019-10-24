@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import api from "../utils/axiosWithAuth";
 import { withFormik, Form, Field, ErrorMessage } from "formik";
 
-const AddTask = ({ touched, errors, status, listId}) => {
+const AddTask = ({ touched, errors, status }) => {
   const [listItem, setListItem] = useState([]);
   useEffect(() => {
     status && setListItem(listItem => [...listItem, status]);
@@ -43,12 +43,11 @@ const AddTask = ({ touched, errors, status, listId}) => {
 };
 
 const FormikAddTask = withFormik({
-  mapPropsToValues({ name, deadline, description, listId }) {
+  mapPropsToValues({ name, deadline, description }) {
     return {
       name: name || "",
       deadline: deadline || "",
       description: description || "",
-      listId: listId
     };
   },
 
@@ -57,9 +56,10 @@ const FormikAddTask = withFormik({
     description: Yup.string().required("Please add a description")
   }),
 
-  handleSubmit(values, { resetForm, setStatus }) {
+  handleSubmit(values, { resetForm, setStatus, props }) {
+    console.log(props)
     api
-      .post(`/lists/${listId}/items`, values)
+      .post(`/lists/${props}/items`, values)
       .then(res => {
         setStatus(res.data);
       })
