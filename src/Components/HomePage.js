@@ -1,7 +1,7 @@
 import React from 'react';
-import FormikAddTodo from './AddTodo';
+import FormikAddBucketList from './AddBucketList';
 import ToDoList from './ToDoList';
-import { AddTodo } from './AddTodo';
+
 
 const HomePage = () => {
    return (
@@ -9,7 +9,7 @@ const HomePage = () => {
          <div className='container'>
             <div className='profile-contain'></div>
             <div className='todo-contain'>
-               <FormikAddTodo />
+               <FormikAddBucketList />
                <ToDoList />
             </div>
          </div>

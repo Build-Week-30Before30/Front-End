@@ -13,12 +13,13 @@ const TodoCard = props => {
    // const taskItem = props.data.find(listId=>
    //    listId.id === props.match.params.listID);
 
+   console.log(props.listId)
    useEffect(() => {
       api
-         .get(`/lists/${props.id}`)
+         .get(`/lists/${props.listId}`)
          .then(response => {
-            console.log(response)
-            setTodoItem(response.items)
+            console.log(response.data)
+            setTodoItem(response.data.items)
          })
          .catch(error => {
             console.log("This is the error from .GET TodoCard", error)
