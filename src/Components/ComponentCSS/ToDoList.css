@@ -1,0 +1,27 @@
+.grid-list {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 300px 300px 300px 300px;
+
+}
+/* 
+.list-contain {
+    border: 1px solid red;
+    background-color: green;
+} */
+
+.list-contain h3 {
+    font-size: 2rem;
+    font-family: var(--font-title);
+}
+
+.list-contain p {
+    font-size: 1.6rem;
+    font-family: var(--font-main-txt);
+}
+
+.list-contain h6 {
+    font-size: 1.6rem;
+    font-family: var(--font-main-txt);
+}
+

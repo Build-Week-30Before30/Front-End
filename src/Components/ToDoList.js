@@ -3,6 +3,7 @@ import api from "../utils/axiosWithAuth";
 import TodoCard from "./TodoCard";
 import AddTask from "./AddTask";
 import { Link } from "react-router-dom";
+import "./ComponentCSS/ToDoList.css";
 
 
 const ToDoList = props => {
@@ -20,10 +21,10 @@ const ToDoList = props => {
   }, []);
 
   return (
-    <div>
+    <div className="grid-list">
       {userList.map(user => {
         return (
-          <div>
+          <div className="list-contain">
             {/* <Link to={`/lists/${user.id}`}> */}
             <h3>{user.name}</h3>
             <p>{user.description}</p>

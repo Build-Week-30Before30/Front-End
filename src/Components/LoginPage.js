@@ -21,7 +21,7 @@ const LoginForm = ({ touched, errors, status, handleSubmit }) => {
    return (
       <div className="form-contain">
         <div className='login-form'>
-           <h1>Login Page</h1>
+           <h2>Login Page</h2>
            <Form onSubmit={handleSubmit}>
               {' '}
               {/* add on submit */}

@@ -12,7 +12,7 @@ const AppRouter = () => {
       <>
          <Switch>
             <Route path='/Home' component={HomePage} />
-            <Route path='/login' component={LoginForm} />
+            <Route exact path='/' component={LoginForm} />
             <Route path='/signup' component={SignupForm} />
             {/* <Route path='/:listID' render={props => <TodoCard {...props}/>}/> */}
             <PrivateRoute path='/protected' component={ToDoList} />
