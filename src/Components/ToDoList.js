@@ -4,7 +4,6 @@ import TodoCard from "./TodoCard";
 import AddTask from "./AddTask";
 import { Link } from "react-router-dom";
 
-const giveKey = Math.random();
 
 const ToDoList = props => {
   const [userList, setUserList] = useState([]);

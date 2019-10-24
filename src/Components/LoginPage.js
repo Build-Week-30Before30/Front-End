@@ -72,7 +72,6 @@ const FormikLoginForm = withFormik({
          .catch(err => console.log(err.response));
    }
 })(LoginForm);
-console.log('This is the HOC', FormikLoginForm);
 
 export default connect(
    null,

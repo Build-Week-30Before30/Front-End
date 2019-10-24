@@ -57,7 +57,7 @@ const FormikAddTask = withFormik({
   }),
 
   handleSubmit(values, { resetForm, setStatus, props }) {
-    console.log(props)
+
     api
       .post(`/lists/${props}/items`, values)
       .then(res => {

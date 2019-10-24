@@ -65,6 +65,6 @@ const FormikSignupForm = withFormik({
          .catch(err => console.log(err.response));
    }
 })(SignupForm);
-console.log('This is the HOC', FormikSignupForm);
+
 
 export default FormikSignupForm;
