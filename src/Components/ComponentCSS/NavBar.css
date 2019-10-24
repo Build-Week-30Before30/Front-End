@@ -9,14 +9,14 @@
     display:flex;
     justify-content: space-between;
     background: linear-gradient(15deg, var(--orange), var(--yellow));
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 
 /* ===========Styling for Buttons============== */
 .button-contain-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 30%;
 }
