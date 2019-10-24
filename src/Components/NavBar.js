@@ -9,11 +9,6 @@ const NavBar = () => {
             <h1>30before30</h1>
             <div className='button-contain-nav'>
                <button>
-                  <Link className='nav-link' to='/home'>
-                     Home
-                  </Link>
-               </button>
-               <button>
                   <Link className='nav-link' to='/'>
                      Login
                   </Link>
