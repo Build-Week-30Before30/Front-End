@@ -3,9 +3,8 @@ import * as Yup from "yup";
 import api from "../utils/axiosWithAuth";
 import { withFormik, Form, Field, ErrorMessage } from "formik";
 
-const AddTask = ({touched, errors, status}) => {
+const AddTask = ({ touched, errors, status }) => {
   const [listItem, setListItem] = useState([]);
-
   useEffect(() => {
     status && setListItem(listItem => [...listItem, status]);
   }, [status]);
@@ -44,11 +43,11 @@ const AddTask = ({touched, errors, status}) => {
 };
 
 const FormikAddTask = withFormik({
-  mapPropsToValues({ name, deadline, description}) {
+  mapPropsToValues({ name, deadline, description }) {
     return {
       name: name || "",
       deadline: deadline || "",
-      description: description || ""
+      description: description || "",
     };
   },
 
@@ -57,15 +56,18 @@ const FormikAddTask = withFormik({
     description: Yup.string().required("Please add a description")
   }),
 
-  handleSubmit(values, { resetForm, setStatus }) {
-    api.post('/lists/:id/items', values)
-       .then(res => {
-          setStatus(res.data);
-       })
-       .catch(error => console.log('Add Task Error', error));
+  handleSubmit(values, { resetForm, setStatus, props }) {
+    console.log(props)
+    api
+      .post(`/lists/${props}/items`, values)
+      .then(res => {
+        setStatus(res.data);
+      })
+      .catch(error => console.log('Add Task Error', error));
 
     resetForm();
- }
+  }
+
 })(AddTask);
 
 export default FormikAddTask;

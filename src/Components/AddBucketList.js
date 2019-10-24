@@ -8,14 +8,14 @@ import { addNewTodo } from '../actions';
 
 
 
-const AddTodo = ({ touched, errors, status }) => {
-   const [task, setTask] = useState([]);
+const AddBucketList = ({ touched, errors, status }) => {
+    const [task, setTask] = useState([]);
 
-    useEffect(()=> {
+    useEffect(() => {
         status && setTask(task => [...task, status]);
         console.log(task);
-    },[status])
-    
+    }, [status])
+
     return (
         <div className="form-contain">
             <div className="add-todo">
@@ -25,7 +25,7 @@ const AddTodo = ({ touched, errors, status }) => {
                             type="text"
                             name="name"
                             placeholder="Add a Bucket List"
-                            />
+                        />
                         {touched.name && errors.name && (
                             <p className="todoReq">{errors.name}</p>
                         )}
@@ -35,7 +35,7 @@ const AddTodo = ({ touched, errors, status }) => {
                             type="date"
                             name="deadline"
                             placeholder="Add a Deadline"
-                            />
+                        />
                     </div>
                     <div className="input-contain">
                         <Field
@@ -43,41 +43,42 @@ const AddTodo = ({ touched, errors, status }) => {
                             type="text"
                             name="description"
                             placeholder="Add a Link"
-                            />
+                        />
                         {touched.description && errors.description && (
                             <p className="todoReq">{errors.description}</p>
                         )}
                     </div>
                     <button type="submit">Add List</button>
                 </Form>
-                <TodoCard task={task}/>
+                <TodoCard task={task} />
             </div>
         </div>
     )
 }
-const FormikAddTodo = withFormik ({
-    mapPropsToValues({name, deadline, description}){
+const FormikAddBucketList = withFormik({
+    mapPropsToValues({ name, deadline, description }) {
         return {
-         name: name || "",
+            name: name || "",
             deadline: deadline || "",
             description: description || ""
         };
     },
 
-   validationSchema: Yup.object().shape({
-         name: Yup.string().required("Please add a list name"),
-         description: Yup.string().required("Please add a link")
+    validationSchema: Yup.object().shape({
+        name: Yup.string().required("Please add a list name"),
+        description: Yup.string().required("Please add a link")
     }),
 
-   handleSubmit(values, { resetForm, setStatus }) {
-      api.post('/lists', values)
-         .then(res => {
-            setStatus(res.data);
-         })
-         .catch(error => console.log('Add List Error', error));
+    handleSubmit(values, { resetForm, setStatus }) {
+        api
+            .post('/lists', values)
+            .then(res => {
+                setStatus(res.data);
+            })
+            .catch(error => console.log('Add List Error', error));
 
-      resetForm();
-   }
-})(AddTodo);
+        resetForm();
+    }
+})(AddBucketList);
 
-export default FormikAddTodo;
+export default FormikAddBucketList;

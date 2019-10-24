@@ -10,15 +10,18 @@ const TodoCard = props => {
    // let time = moment(dayDue).to(today);
    //Should work when we get date from axios
    const [todoItem, setTodoItem] = useState([])
+   // const taskItem = props.data.find(listId=>
+   //    listId.id === props.match.params.listID);
 
-   useEffect(()=> {
+   console.log(props.listId)
+   useEffect(() => {
       api
-         .get(`/lists/${props.id}`)
-         .then(response =>{
-            console.log(response)
-            setTodoItem(response.items)
+         .get(`/lists/${props.listId}`)
+         .then(response => {
+            console.log(response.data)
+            setTodoItem(response.data.items)
          })
-         .catch(error=>{
+         .catch(error => {
             console.log("This is the error from .GET TodoCard", error)
          })
    }, [])
@@ -33,7 +36,7 @@ const TodoCard = props => {
                <div>
                   <p>{task.description}</p>
                </div>
-         <button type='submit' onClick={() => removeTodo(task)}>
+               <button type='submit' onClick={() => removeTodo(task)}>
                   Complete
                </button>
             </div>
