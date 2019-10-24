@@ -29,7 +29,7 @@ const ToDoList = props => {
             <h3>{user.name}</h3>
             <p>{user.description}</p>
             <h6>{user.deadline}</h6>
-
+            {console.log(user)}
             <AddTask listId={user.id} />
 
             <TodoCard key={user.id} listId={user.id} toggleItem={props.toggleItem} />
