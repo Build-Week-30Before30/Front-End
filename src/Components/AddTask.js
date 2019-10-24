@@ -4,48 +4,17 @@ import api from "../utils/axiosWithAuth";
 import { withFormik, Form, Field, ErrorMessage } from "formik";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-const AddTask = ({ touched, errors, status, buttonLabel, className }) => {
+const AddTask = ({ touched, errors, status, buttonLabel, className, listId }) => {
+  
   const [listItem, setListItem] = useState([]);
-
 
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
+
   useEffect(() => {
     status && setListItem(listItem => [...listItem, status]);
   }, [status]);
-
-  // return (
-  //   <div className="form-contain">
-  //     <div className="add-list-item">
-  //       <Form>
-  //         <div>
-  //           <Field type="text" name="name" placeholder="Add a Task" />
-  //           {touched.name && errors.name && (
-  //             <p className="todoReq">{errors.name}</p>
-  //           )}
-  //         </div>
-
-  //         <div>
-  //           <Field type="date" name="deadline" placeholder="Add a Deadline" />
-  //         </div>
-
-  //         <div>
-  //           <Field
-  //             component="textarea"
-  //             type="text"
-  //             name="description"
-  //             placeholder="Add a Description"
-  //           />
-  //           {touched.description && errors.description && (
-  //             <p className="todoReq">{errors.description}</p>
-  //           )}
-  //         </div>
-  //         <button type="submit">Add Task</button>
-  //       </Form>
-  //     </div>
-  //   </div>
-  // );
 
     return (
       <div>
@@ -82,7 +51,7 @@ const AddTask = ({ touched, errors, status, buttonLabel, className }) => {
                   <p className="todoReq">{errors.description}</p>
                 )}
               </div>
-              <button type="submit">Add Task</button>
+              <button type="submit" onClick={toggle}>Add Task</button>
             </Form>
           </ModalBody>
           <ModalFooter>
@@ -114,7 +83,7 @@ const FormikAddTask = withFormik({
   handleSubmit(values, { resetForm, setStatus, props }) {
     console.log(props);
     api
-      .post(`/lists/${props}/items`, values)
+      .post(`/lists/${props.listId}/items`, values)
       .then(res => {
         setStatus(res.data);
       })
@@ -125,3 +94,36 @@ const FormikAddTask = withFormik({
 })(AddTask);
 
 export default FormikAddTask;
+
+
+  // return (
+  //   <div className="form-contain">
+  //     <div className="add-list-item">
+  //       <Form>
+  //         <div>
+  //           <Field type="text" name="name" placeholder="Add a Task" />
+  //           {touched.name && errors.name && (
+  //             <p className="todoReq">{errors.name}</p>
+  //           )}
+  //         </div>
+
+  //         <div>
+  //           <Field type="date" name="deadline" placeholder="Add a Deadline" />
+  //         </div>
+
+  //         <div>
+  //           <Field
+  //             component="textarea"
+  //             type="text"
+  //             name="description"
+  //             placeholder="Add a Description"
+  //           />
+  //           {touched.description && errors.description && (
+  //             <p className="todoReq">{errors.description}</p>
+  //           )}
+  //         </div>
+  //         <button type="submit">Add Task</button>
+  //       </Form>
+  //     </div>
+  //   </div>
+  // );
