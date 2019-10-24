@@ -3,7 +3,6 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import api from "../utils/axiosWithAuth";
 import "./ComponentCSS/AddTodo.css";
-import TodoCard from "./TodoCard";
 
 
 
@@ -58,7 +57,6 @@ const AddBucketList = ({ touched, errors, status, values }) => {
                     </div>
                     <button type="submit">Add List</button>
                 </Form>
-                <TodoCard task={task} />
             </div>
         </div>
     )

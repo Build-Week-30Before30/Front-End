@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/axiosWithAuth";
 import moment from "moment";
-import TodoCard from "./TodoCard";
 import AddTask from "./AddTask";
 import { Link } from "react-router-dom";
 import "./ComponentCSS/ToDoList.css";
 
 
 const ToDoList = props => {
+  const today = moment().format();
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -26,16 +26,17 @@ const ToDoList = props => {
       {userList.map(user => {
         return (
           <div className="list-contain">
-            <Link to={`/lists/${user.id}`}>
+            <Link to={`/list/${user.id}`}>
             <h3>{user.name}</h3>
             <p>{user.description}</p>
-            <h6>{moment(user.deadline).format("MMM DD, YYYY")}</h6>
+            <span>
+            <h6>Deadline: {moment(user.deadline).format("MMM DD, YYYY")}</h6>
+            <p>{moment(user.deadline).to(today, true)} left</p>
+            </span>
             </Link>
             {console.log(user)}
             <AddTask listId={user.id} />
 
-            <TodoCard key={user.id} listId={user.id} toggleItem={props.toggleItem} />
-            
             <button className="clear-button" onClick={props.clearCompleted}>
               Clear Completed
             </button>
@@ -47,3 +48,4 @@ const ToDoList = props => {
 };
 
 export default ToDoList;
+            {/* <TodoCard key={user.id} listId={user.id} toggleItem={props.toggleItem} /> */}
