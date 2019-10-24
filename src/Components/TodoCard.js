@@ -10,6 +10,8 @@ const TodoCard = props => {
    // let time = moment(dayDue).to(today);
    //Should work when we get date from axios
    const [todoItem, setTodoItem] = useState([])
+   // const taskItem = props.data.find(listId=>
+   //    listId.id === props.match.params.listID);
 
    useEffect(()=> {
       api

@@ -6,6 +6,7 @@ import HomePage from './HomePage';
 import LoginForm from './LoginPage';
 import SignupForm from './SignupPage';
 
+
 const AppRouter = () => {
    return (
       <>
@@ -13,6 +14,7 @@ const AppRouter = () => {
             <Route path='/Home' component={HomePage} />
             <Route path='/login' component={LoginForm} />
             <Route path='/signup' component={SignupForm} />
+            {/* <Route path='/:listID' render={props => <TodoCard {...props}/>}/> */}
             <PrivateRoute path='/protected' component={ToDoList} />
          </Switch>
       </>

@@ -3,9 +3,9 @@ import * as Yup from "yup";
 import api from "../utils/axiosWithAuth";
 import { withFormik, Form, Field, ErrorMessage } from "formik";
 
-const AddTask = ({touched, errors, status}) => {
+const AddTask = ({touched, errors, status, props}) => {
   const [listItem, setListItem] = useState([]);
-
+  const {id} = props
   useEffect(() => {
     status && setListItem(listItem => [...listItem, status]);
   }, [status]);
@@ -57,8 +57,8 @@ const FormikAddTask = withFormik({
     description: Yup.string().required("Please add a description")
   }),
 
-  handleSubmit(values, { resetForm, setStatus }) {
-    api.post('/lists/:id/items', values)
+  handleSubmit(values, { resetForm, setStatus, id }) {
+    api.post(`/lists/${id}/items`, values)
        .then(res => {
           setStatus(res.data);
        })
