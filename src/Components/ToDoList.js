@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/axiosWithAuth";
+import moment from "moment";
 import TodoCard from "./TodoCard";
 import AddTask from "./AddTask";
 import { Link } from "react-router-dom";
@@ -25,15 +26,16 @@ const ToDoList = props => {
       {userList.map(user => {
         return (
           <div className="list-contain">
-            {/* <Link to={`/lists/${user.id}`}> */}
+            <Link to={`/lists/${user.id}`}>
             <h3>{user.name}</h3>
             <p>{user.description}</p>
-            <h6>{user.deadline}</h6>
+            <h6>{moment(user.deadline).format("MMM DD, YYYY")}</h6>
+            </Link>
             {console.log(user)}
             <AddTask listId={user.id} />
 
             <TodoCard key={user.id} listId={user.id} toggleItem={props.toggleItem} />
-            {/* </Link> */}
+            
             <button className="clear-button" onClick={props.clearCompleted}>
               Clear Completed
             </button>
