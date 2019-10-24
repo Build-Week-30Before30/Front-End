@@ -13,7 +13,6 @@ const AllToDos = (props) => {
         ))}
        
         <button className="clear-button" onClick={props.clearCompleted}>
-          {console.log(props)}
           Clear Completed
         </button>
        

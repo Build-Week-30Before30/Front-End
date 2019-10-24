@@ -4,16 +4,15 @@ import * as Yup from "yup";
 import api from "../utils/axiosWithAuth";
 import "./ComponentCSS/AddTodo.css";
 import TodoCard from "./TodoCard";
-import { addNewTodo } from '../actions';
 
 
 
-const AddBucketList = ({ touched, errors, status }) => {
+
+const AddBucketList = ({ touched, errors, status, values }) => {
     const [task, setTask] = useState([]);
 
     useEffect(() => {
         status && setTask(task => [...task, status]);
-        console.log(task);
     }, [status])
 
     return (
@@ -48,6 +47,15 @@ const AddBucketList = ({ touched, errors, status }) => {
                             <p className="todoReq">{errors.description}</p>
                         )}
                     </div>
+                    <div>
+                        <label>Public List?
+                        <Field
+                                type="checkbox"
+                                name="is_private"
+                                checked={values.is_private}
+                            />
+                        </label>
+                    </div>
                     <button type="submit">Add List</button>
                 </Form>
                 <TodoCard task={task} />
@@ -56,11 +64,12 @@ const AddBucketList = ({ touched, errors, status }) => {
     )
 }
 const FormikAddBucketList = withFormik({
-    mapPropsToValues({ name, deadline, description }) {
+    mapPropsToValues({ name, deadline, description, is_private }) {
         return {
             name: name || "",
             deadline: deadline || "",
-            description: description || ""
+            description: description || "",
+            is_private: is_private || false,
         };
     },
 
