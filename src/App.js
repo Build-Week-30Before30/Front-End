@@ -1,19 +1,26 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import './App.css';
-import LoginForm from './Components/LoginPage';
-import SignupForm from './Components/SignupPage';
-import HomePage from './Components/HomePage';
-import NavBar from './Components/NavBar';
 import AppRouter from './Components/AppRouter';
+import Footer from './Components/Footer';
 
 function App() {
    return (
+      <div>
+
       <div className='App'>
+<<<<<<< HEAD
          <header>
          <NavBar />
          </header>
+=======
+
+>>>>>>> 99737d95381bad4173092fd6ea1598d212345ec1
          <AppRouter />
+
+      </div>
+      <footer>
+            <Footer/>
+         </footer>
       </div>
    );
 }

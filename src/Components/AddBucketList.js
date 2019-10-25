@@ -3,20 +3,29 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import api from "../utils/axiosWithAuth";
 import "./ComponentCSS/AddTodo.css";
-import TodoCard from "./TodoCard";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-
-
-const AddBucketList = ({ touched, errors, status, values }) => {
+const AddBucketList = ({ touched, errors, status, values, className }) => {
     const [task, setTask] = useState([]);
+
+    // =============Modal========================
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => setModal(!modal);
+    // =============Modal========================
 
     useEffect(() => {
         status && setTask(task => [...task, status]);
     }, [status])
 
     return (
-        <div className="form-contain">
+        <div>
+          <Button onClick={toggle}>Add List</Button>
+          <Modal isOpen={modal} toggle={toggle} className={className}>
+            <ModalHeader toggle={toggle}>Add a new Bucketlist</ModalHeader>
+            <ModalBody>
+            <div className="form-contain">
             <div className="add-todo">
                 <Form className="todo-form">
                     <div className="input-contain">
@@ -56,12 +65,17 @@ const AddBucketList = ({ touched, errors, status, values }) => {
                             />
                         </label>
                     </div>
-                    <button type="submit">Add List</button>
+                    <button type="submit" onClick={toggle}>Add List</button>
                 </Form>
-                <TodoCard task={task} />
             </div>
         </div>
-    )
+            </ModalBody>
+            <ModalFooter>
+              <Button color="secondary" onClick={toggle}>Cancel</Button>
+            </ModalFooter>
+          </Modal>
+        </div>
+      );
 }
 const FormikAddBucketList = withFormik({
     mapPropsToValues({ name, deadline, description, is_private }) {
