@@ -4,11 +4,12 @@
     grid-template-rows: 300px 300px 300px 300px;
 
 }
-/* 
+
 .list-contain {
-    border: 1px solid red;
-    background-color: green;
-} */
+    margin-top: 3rem; 
+    border: 1px solid DARKORANGE;
+    width: 95%;
+}
 
 .list-contain h3 {
     font-size: 2rem;
@@ -24,4 +25,15 @@
     font-size: 1.6rem;
     font-family: var(--font-main-txt);
 }
+
+.clear-button {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    border-radius: 5px;
+    background: orange;
+    margin-top: 2%;
+} 
+
+
+
 

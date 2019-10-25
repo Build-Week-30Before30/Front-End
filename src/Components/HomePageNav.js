@@ -13,7 +13,7 @@ const HomePageNav = () => {
         <FormikAddBucketList />
         </button>
         <button>
-          <Link className="nav-link" to="/login"> 
+          <Link className="nav-link" to="/"> 
           {/* need to add logout functionality  */}
             Logout
           </Link>
