@@ -10,7 +10,7 @@
     background-color: green;
 } */
 
-.list-contain h3 {
+.list-contain h3{
     font-size: 2rem;
     font-family: var(--font-title);
 }
