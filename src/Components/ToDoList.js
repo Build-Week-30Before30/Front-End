@@ -40,7 +40,7 @@ const ToDoList = props => {
               <AddTask listId={user.id} />
 
               <button className="clear-button" onClick={props.clearCompleted}>
-                Clear Completed
+                Clear List
             </button>
             </div>
           );
