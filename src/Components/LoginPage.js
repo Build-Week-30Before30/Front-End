@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import './ComponentCSS/LoginPage.css';
 import { connect } from 'react-redux';
 import { loggedStatus } from '../actions';
+import NavBar from "./NavBar";
 
 const LoginForm = ({ touched, errors, status, handleSubmit }) => {
    const [login, setLogin] = useState([]);
@@ -19,29 +20,34 @@ const LoginForm = ({ touched, errors, status, handleSubmit }) => {
    console.log('cookie :', document.cookie);
 
    return (
-      <div className="form-contain">
-        <div className='login-form'>
-           <h2>Login Page</h2>
-           <Form onSubmit={handleSubmit}>
-              {' '}
-              {/* add on submit */}
-              <label>
-                 {' '}
-                 Name:
+      <div>
+         <header>
+            <NavBar />
+         </header>
+         <div className="form-contain">
+            <div className='login-form'>
+               <h2>Login Page</h2>
+               <Form onSubmit={handleSubmit}>
+                  {' '}
+                  {/* add on submit */}
+                  <label>
+                     {' '}
+                     Name:
                  <Field type='text' name='username' placeholder='Username' />
-              </label>
-              <label>
-                 {' '}
-                 Password:
+                  </label>
+                  <label>
+                     {' '}
+                     Password:
                  <Field type='password' name='password' placeholder='Password' />
-                 {touched.password && errors.password && (
-                    <p className='error'>{errors.password}</p>
-                 )}
-              </label>
-              <button type='submit'>Login</button>{' '}
-              {/* login button to send data to the server */}
-           </Form>
-        </div>
+                     {touched.password && errors.password && (
+                        <p className='error'>{errors.password}</p>
+                     )}
+                  </label>
+                  <button type='submit'>Login</button>{' '}
+                  {/* login button to send data to the server */}
+               </Form>
+            </div>
+         </div>
       </div>
    );
 };

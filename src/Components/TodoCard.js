@@ -6,11 +6,8 @@ import { removeTodo } from '../actions';
 
 const TodoCard = props => {
    const today = moment().format();
-   // let dayDue = moment(todoItem.deadline).format();
-   // let time = moment(dayDue).to(today);
-   //Should work when we get date from axios
+   
    const taskList = Number(props.match.params.listID);
-
    const [todoItem, setTodoItem] = useState([])
 
    useEffect(() => {

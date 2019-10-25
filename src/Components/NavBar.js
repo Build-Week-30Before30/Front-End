@@ -8,7 +8,7 @@ const NavBar = () => {
          <nav className='login-nav'>
             <h1>30before30</h1>
             <div className='button-contain-nav'>
-               <button>
+            <button>
                   <Link className='nav-link' to='/'>
                      Login
                   </Link>
