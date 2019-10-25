@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Arvo%7CComfortaa%7CRighteous&display=swap');
 
+a {
+  text-decoration: none;
+}
+
 /* Document
    ========================================================================== */
 
