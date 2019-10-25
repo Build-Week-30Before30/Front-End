@@ -3,16 +3,14 @@ import { Link } from "react-router-dom";
 import FormikAddBucketList from './AddBucketList';
 import "./ComponentCSS/NavBar.css";
 
+//NavBar built for after users log in
 const HomePageNav = () => {
   return (
     <nav className="login-nav">
       <h1>30before30</h1>
       <div className="button-contain-nav">
-        <FormikAddBucketList />
         <button>
-          <Link to="/Home">
-            Home
-          </Link>
+        <FormikAddBucketList />
         </button>
         <button>
           <Link className="nav-link" to="/login"> 

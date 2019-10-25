@@ -6,7 +6,7 @@ import "./ComponentCSS/AddTodo.css";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-const AddBucketList = ({ touched, errors, status, values, buttonLabel, className }) => {
+const AddBucketList = ({ touched, errors, status, values, className }) => {
     const [task, setTask] = useState([]);
 
     // =============Modal========================
@@ -19,55 +19,9 @@ const AddBucketList = ({ touched, errors, status, values, buttonLabel, className
         status && setTask(task => [...task, status]);
     }, [status])
 
-    // return (
-    //     <div className="form-contain">
-    //         <div className="add-todo">
-    //             <Form className="todo-form">
-    //                 <div className="input-contain">
-    //                     <Field
-    //                         type="text"
-    //                         name="name"
-    //                         placeholder="Add a Bucket List"
-    //                     />
-    //                     {touched.name && errors.name && (
-    //                         <p className="todoReq">{errors.name}</p>
-    //                     )}
-    //                 </div>
-    //                 <div className="input-contain">
-    //                     <Field
-    //                         type="date"
-    //                         name="deadline"
-    //                         placeholder="Add a Deadline"
-    //                     />
-    //                 </div>
-    //                 <div className="input-contain">
-    //                     <Field
-    //                         component="textarea"
-    //                         type="text"
-    //                         name="description"
-    //                         placeholder="Add a Link"
-    //                     />
-    //                     {touched.description && errors.description && (
-    //                         <p className="todoReq">{errors.description}</p>
-    //                     )}
-    //                 </div>
-    //                 <div>
-    //                     <label>Public List?
-    //                     <Field
-    //                             type="checkbox"
-    //                             name="is_private"
-    //                             checked={values.is_private}
-    //                         />
-    //                     </label>
-    //                 </div>
-    //                 <button type="submit">Add List</button>
-    //             </Form>
-    //         </div>
-    //     </div>
-    // )
     return (
         <div>
-          <Button color="warning" onClick={toggle}>Add New List</Button>
+          <Button color="warning" onClick={toggle}>Add List</Button>
           <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader toggle={toggle}>Add a new Bucketlist</ModalHeader>
             <ModalBody>

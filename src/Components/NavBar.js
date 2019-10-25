@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ComponentCSS/NavBar.css';
 
-
+//NavBar built for before users login
 const NavBar = () => {
    return (
          <nav className='login-nav'>

@@ -6,9 +6,11 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const AddTask = ({ touched, errors, status, className, listId }) => {
   const [listItem, setListItem] = useState([]);
-  
+
+  // =============Modal========================
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  // =============Modal========================
 
   useEffect(() => {
     status && setListItem(listItem => [...listItem, status]);

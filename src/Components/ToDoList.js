@@ -22,30 +22,33 @@ const ToDoList = props => {
   }, []);
 
   return (
-    <div className="grid-list">
-      {userList.map(user => {
-        return (
-          <div className="list-contain">
-            <Link to={`/list/${user.id}`}>
-            <h3>{user.name}</h3>
-            <p>{user.description}</p>
-            <span>
-            <h6>Deadline: {moment(user.deadline).format("MMM DD, YYYY")}</h6>
-            <p>{moment(user.deadline).to(today, true)} left</p>
-            </span>
-            </Link>
-            {console.log(user)}
-            <AddTask listId={user.id} />
+    <div>
 
-            <button className="clear-button" onClick={props.clearCompleted}>
-              Clear Completed
+      <div className="grid-list">
+        {userList.map(user => {
+          return (
+            <div className="list-contain">
+              <Link to={`/list/${user.id}`}>
+                <h3>{user.name}</h3>
+                <p>{user.description}</p>
+                <span>
+                  <h6>Deadline: {moment(user.deadline).format("MMM DD, YYYY")}</h6>
+                  <p>{moment(user.deadline).to(today, true)} left</p>
+                </span>
+              </Link>
+              {console.log(user)}
+              <AddTask listId={user.id} />
+
+              <button className="clear-button" onClick={props.clearCompleted}>
+                Clear Completed
             </button>
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
 
 export default ToDoList;
-            {/* <TodoCard key={user.id} listId={user.id} toggleItem={props.toggleItem} /> */}
+{/* <TodoCard key={user.id} listId={user.id} toggleItem={props.toggleItem} /> */ }
