@@ -21,7 +21,7 @@ const AddBucketList = ({ touched, errors, status, values, className }) => {
 
     return (
         <div>
-          <Button color="warning" onClick={toggle}>Add List</Button>
+          <Button onClick={toggle}>Add List</Button>
           <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader toggle={toggle}>Add a new Bucketlist</ModalHeader>
             <ModalBody>
