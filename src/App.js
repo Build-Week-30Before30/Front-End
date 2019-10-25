@@ -5,14 +5,10 @@ import Footer from './Components/Footer';
 
 function App() {
    return (
-      <div>
-
       <div className='App'>
-
          <AppRouter />
-
-      </div>
-      <footer>
+         
+         <footer>
             <Footer/>
          </footer>
       </div>
