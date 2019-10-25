@@ -1,7 +1,10 @@
 .App h1 {
+    display: flex;
     font-family: var(--font-logo);
     padding-left: 1%;
     font-size: 3.2rem;
+    width: 50%;
+    align-items: flex-start;
 }
 
 
@@ -36,4 +39,9 @@
     font-size: 1.6rem;
 }
 
+.btn {
+    font-family: var(--font-title);
+    font-size: 1.6rem !important;
+    white-space: nowrap;
+}
 /* ===========Styling for Buttons============== */

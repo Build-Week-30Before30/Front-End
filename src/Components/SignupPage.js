@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import NavBar from "./NavBar";
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import api from '../utils/axiosWithAuth';
@@ -14,6 +14,10 @@ const SignupForm = ({ touched, errors, status }) => {
    }, [status]);
 
    return (
+      <div>
+         <header>
+            <NavBar />
+         </header>
       <div className="form-contain">
          <div className='login-form'>
             <h2>Signup Page</h2>
@@ -24,7 +28,7 @@ const SignupForm = ({ touched, errors, status }) => {
                   <Field type='text' name='username' placeholder='Username' />
                   {touched.name && errors.name && (
                      <p className='error'>{errors.name}</p>
-                  )}
+                     )}
                </label>
                <label>
                   {' '}
@@ -32,13 +36,14 @@ const SignupForm = ({ touched, errors, status }) => {
                   <Field type='password' name='password' placeholder='Password' />
                   {touched.password && errors.password && (
                      <p className='error'>{errors.password}</p>
-                  )}
+                     )}
                </label>
                <button type='submit'>Create Account</button>{' '}
                {/* signup button to send data to the server */}
             </Form>
          </div>
       </div>
+</div>
    );
 };
 

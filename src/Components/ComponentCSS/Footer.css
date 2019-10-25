@@ -1,0 +1,7 @@
+footer {
+    background: linear-gradient(15deg, var(--orange), var(--yellow));
+}
+
+footer div p {
+    font-family: var(--font-logo);
+}

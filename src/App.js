@@ -1,19 +1,20 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import './App.css';
-import LoginForm from './Components/LoginPage';
-import SignupForm from './Components/SignupPage';
-import HomePage from './Components/HomePage';
-import NavBar from './Components/NavBar';
 import AppRouter from './Components/AppRouter';
+import Footer from './Components/Footer';
 
 function App() {
    return (
+      <div>
+
       <div className='App'>
-         <header>
-            <NavBar />
-         </header>
+
          <AppRouter />
+
+      </div>
+      <footer>
+            <Footer/>
+         </footer>
       </div>
    );
 }
